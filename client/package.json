@@ -1,0 +1,33 @@
+{
+  "name": "binye",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "mongodb": "^3.1.6",
+    "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.4.1",
+    "react-error-overlay": "^4.0.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "1.1.1",
+    "react-virtualized": "^9.21.0",
+    "reactstrap": "^5.0.0-beta.3",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.3.0",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.80.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "redux": "^3.7.2"
+  }
+}
