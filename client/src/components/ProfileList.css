@@ -1,0 +1,26 @@
+#profile-pic {
+    width: 30%
+}
+
+
+#uno{
+  display:inline-block;
+  width: 45%;
+  margin-top: -130px;
+}
+
+#dos{
+  display:inline-block;
+  align-items: left;
+  width: 45%;
+  margin-top:0px
+}
+
+.profile_list{
+  margin: 20px 90px;
+  background-color: antiquewhite;
+}
+
+#description{
+  
+}
