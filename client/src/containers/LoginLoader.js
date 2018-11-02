@@ -7,10 +7,11 @@ import { generateProfile } from '../actions'
 
 export default connect(
 
+    // mapStateToProps
     state => ({
         initialValues: state.identity.profile
     }),
-
+    // mapDispatchToProps
     dispatch => ({
         onSubmit: values => {
             dispatch(generateProfile())
