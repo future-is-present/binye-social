@@ -1,0 +1,36 @@
+{
+  "name": "dewa",
+  "version": "0.1.0",
+  "description": "Dewa Green Coin (GC) PoC in collaboration with Spherity",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel ./bin -d dist",
+    "start": "babel-node ./bin/www --presets env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ascribe/dewa.git"
+  },
+  "author": "dev@bigchaindb.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ascribe/dewa/issues"
+  },
+  "homepage": "https://github.com/ascribe/dewa#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "mongodb": "^3.0.10",
+    "morgan": "^1.9.0",
+    "niceware": "^1.0.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1"
+  }
+}
