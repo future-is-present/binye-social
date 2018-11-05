@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  server:
+    depends_on:
+        - mongodb
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    command: npm run start
+
+  mongodb:
+    image: mongo:3.6
+    volumes:
+       - ./mongodb/data/db:/data/db
+       - ./mongodb/data/configdb:/data/configdb
+    ports:
+      - 27017:27017
+    command: mongod
