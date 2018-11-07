@@ -1,13 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { Provider } from 'react-redux'
-
+import "babel-polyfill"
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import createHistory from 'history/createBrowserHistory' // eslint-disable-line import/no-extraneous-dependencies
 import thunk from 'redux-thunk'
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import api from './middleware/api'
+import createSlimAsyncMiddleware from './middleware/middleware'
 import ReactDOM from 'react-dom';
 import appReducer from './reducers'
 import registerServiceWorker from './registerServiceWorker';
@@ -24,6 +26,7 @@ const store = createStore(
     appReducer,
     composeWithDevTools(applyMiddleware(
         thunk,
+        createSlimAsyncMiddleware,
         routerMiddleware(history)
     ))
 )

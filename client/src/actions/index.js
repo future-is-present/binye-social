@@ -1,3 +1,7 @@
+const 
+    FETCH_DATA_ERROR =  'FETCH_DATA_ERROR',
+    FETCH_DATA_PENDING = 'FETCH_DATA_PENDING',
+    FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 
 export function generateProfile(user) {
     localStorage.setItem('user', "new user")
@@ -19,7 +23,6 @@ export function generateProfile(user) {
         .catch((error) => {
             console.error(error);
         });
-
 
     return {
         type: 'GENERATE_PROFILE',
@@ -57,3 +60,18 @@ export async function submitProfile(name) {
         user_name: name
     }
 }
+
+export function fetchData() {
+    return {
+      types: [
+        FETCH_DATA_PENDING,
+        FETCH_DATA_SUCCESS,
+        FETCH_DATA_ERROR,
+      ],
+      shouldCallAPI: state =>  state.dataArr.length === 0,
+      callAPI: async() =>{
+        console.log('fetching')
+        return await fetch('http://localhost:8080/getProfiles').then(res => res.json())
+      }
+    }
+  }
