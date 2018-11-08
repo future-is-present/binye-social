@@ -31,7 +31,6 @@ class Home extends Component {
       }
 
     render() {
-        const numProfiles= 2
         // for (var i = 0; i < 2; i++) {
         //     this.state.listProfiles.push(<ProfileList key={i} />);
         // }

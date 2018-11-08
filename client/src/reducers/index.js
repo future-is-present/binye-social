@@ -9,7 +9,6 @@ const initialState = {
 const dataArr = (state = initialState, action) => {
     switch(action.type){
         case "FETCH_DATA_SUCCESS":
-            console.log('Data fetch succeded. Update status')
             return Object.assign({}, state, {
                 response: action.payload,
             })    

@@ -52,7 +52,6 @@ export async function submitProfile(name) {
         history: 'history'
     }
     //await mdb.insert('profile', profile)
-    console.log('inserted to mongodb new profile')
 
     // Redux
     return {
@@ -70,7 +69,6 @@ export function fetchData() {
       ],
       shouldCallAPI: state =>  state.dataArr.length === 0,
       callAPI: async() =>{
-        console.log('fetching')
         return await fetch('http://localhost:8080/getProfiles').then(res => res.json())
       }
     }

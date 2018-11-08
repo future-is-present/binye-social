@@ -3,6 +3,8 @@ import profilePicture from '../resources/cala.png'
 import {Link} from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 import './ProfileList.css'
+import List from './List'
+import PropTypes from 'prop-types'
 
 const baseUri = 'http://localhost:8080/getProfiles';
 
@@ -12,6 +14,11 @@ const baseUri = 'http://localhost:8080/getProfiles';
 const LoadingIndicator = () => <div className="loading-indicator">Loading...</div>;
 
 class SingleProfile extends Component {
+
+  static propTypes = {
+    nation: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired
+  }
 
   render(){
   return (
@@ -23,18 +30,13 @@ class SingleProfile extends Component {
         <img id="profile-pic" src={profilePicture}  alt="logo" />
       </div>
       <div id="dos">
-      <h5>Nationality</h5>
+      <h5>Nationality:</h5>
        <br/>
-      <h4> Bulgaria</h4>
+      <h4> {this.props.nation}</h4>
       <br/>
 
           <br/>
-          <p id="description">I’m originally from Nigeria and I had been living in Libya for five years when the war broke out. 
-            I had a good life: I was working as a tailor and I earned enough to send money home to loved ones. 
-            But after the fighting started, people like us – black people – became very vulnerable, because all the 
-            youth had weapons and they knew we had money in our houses and they could rob us. If you went out for something 
-            to eat, a gang would stop you and ask if you supported them. They might be rebels, they might be government, 
-            you didn’t know.   </p>
+          <p id="description">{this.props.description} </p>
 
       </div>
       </Container>
@@ -63,21 +65,36 @@ export default class ProfileList extends Component {
   loadProfiles() {
     this.props.onFetch()
       .then(state => {
-        console.log('updated state');
+        this.setState({isLoaded: true})
+        console.log('updated state', this.props.profileInfo[0].nationality, state);
       })
       .catch(err => {
         console.log('Error while fetching profiles');
       });
   }
   
+  renderProfile(id, nationality, description) {
+    return (
+      <SingleProfile
+      key={id}
+        nation={nationality}
+        description={description} />
+    )
+  }
   
   render() {
-    const { isLoaded, symbol, latestPrice } = this.state;
+    const { isLoaded} = this.state;
     console.log('isloaded', isLoaded)
+    if(!isLoaded){
+      return <h1><i>Loading profiles...}</i></h1>
+    }
     return isLoaded
       ? 
+      <List renderItem={this.renderProfile}
+              items={this.props.profileInfo}
+              // onLoadMoreClick={this.handleLoadMoreClick}
+              loadingLabel={`Loading's starred...`} />
+      :
     <div> nothing</div>
-    : <SingleProfile symbol={symbol} price={latestPrice} />
   }
 }
-

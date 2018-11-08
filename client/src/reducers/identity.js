@@ -26,10 +26,8 @@ const identity = (state = initialState, action) => {
                 }
             })
         case 'SHOW_PROFILE':
-        console.log('Triggered show profile')
             return state
         default:
-            console.log('Triggered the default mode of the reducer. Identity.js')
             return state
     }
 }

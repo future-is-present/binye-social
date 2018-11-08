@@ -4,12 +4,27 @@ import { showProfile, fetchData } from '../actions/index'
 import ProfileList from '../components/ProfileList';
 
 const baseUri = 'http://localhost:8080/getProfiles';
+
+
+const mapStateToProps = (state, ownProps) => {
+
+  
+    const {
+        identity,
+        dataArr
+    } = state
+
+    const profileInfo =  dataArr.response
+
+    return {
+        initialValues: identity.profile,
+        dataArr,
+        profileInfo
+    }
+  }
 export default connect(
 
-    (state) => ({
-        initialValues: state.identity.profile,
-        dataArr: ['un', 'deu']
-    }),
+    mapStateToProps,
 
     dispatch => ({
         onSubmit: values => {
