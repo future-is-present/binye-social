@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import profilePicture from '../resources/cala.png'
 import {Link} from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
-import './ProfileList.css'
+import './ListProfilesView.css'
 import List from './List'
-import PropTypes from 'prop-types'
 
 const baseUri = 'http://localhost:8080/getProfiles';
 
@@ -13,40 +12,32 @@ const baseUri = 'http://localhost:8080/getProfiles';
 
 const LoadingIndicator = () => <div className="loading-indicator">Loading...</div>;
 
-class SingleProfile extends Component {
 
-  static propTypes = {
-    nation: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
-  }
-
-  render(){
-  return (
-    <Link to="/profile">
-    <button className="profile_list" onClick={this.clickProfile}>
-      <Container>
-      <h4> Name</h4>
-      <div id="uno">
-        <img id="profile-pic" src={profilePicture}  alt="logo" />
-      </div>
-      <div id="dos">
-      <h5>Nationality:</h5>
-       <br/>
-      <h4> {this.props.nation}</h4>
-      <br/>
-
-          <br/>
-          <p id="description">{this.props.description} </p>
-
-      </div>
-      </Container>
-    </button>
-    </Link>
-  );
-  }
+const SingleView = ({ nation, description, username }) => {
+    return (
+      <Link to={`/profile/${username}`}>
+      <button className="profile_list" onClick={this.clickProfile}>
+        <Container >
+        <h4> Name: {username}</h4>
+        <div id="uno">
+          <img id="profile-pic" src={profilePicture}  alt="logo" />
+        </div>
+        <div id="dos">
+        <h5>Nationality:</h5>
+         <br/>
+        <h4> {nation}</h4>
+        <br/>
+  
+            <br/>
+            <p id="description">{description} </p>
+  
+        </div>
+        </Container>
+      </button>
+      </Link>
+  )
 }
-
-export default class ProfileList extends Component {
+export default class ListProfilesView extends Component {
 
   constructor(props) {
     super(props);
@@ -66,31 +57,33 @@ export default class ProfileList extends Component {
     this.props.onFetch()
       .then(state => {
         this.setState({isLoaded: true})
-        console.log('updated state', this.props.profileInfo[0].nationality, state);
+        console.log('updated state', state);
       })
       .catch(err => {
         console.log('Error while fetching profiles');
       });
   }
   
-  renderProfile(id, nationality, description) {
+  renderView(id, username, nationality, description) {
     return (
-      <SingleProfile
+      <SingleView
       key={id}
+      myKey={id}
+      username={username}
         nation={nationality}
-        description={description} />
+        description={description}
+         />
     )
   }
   
   render() {
     const { isLoaded} = this.state;
-    console.log('isloaded', isLoaded)
     if(!isLoaded){
       return <h1><i>Loading profiles...}</i></h1>
     }
     return isLoaded
       ? 
-      <List renderItem={this.renderProfile}
+      <List renderItem={this.renderView}
               items={this.props.profileInfo}
               // onLoadMoreClick={this.handleLoadMoreClick}
               loadingLabel={`Loading's starred...`} />

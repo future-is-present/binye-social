@@ -12,6 +12,7 @@ const initialState = {
 const identity = (state = initialState, action) => {
     switch (action.type) {
         case 'GENERATE_PROFILE':
+            console.log('updating state')
             return Object.assign({}, state, {
                 password: action.password,
                 name: action.name,

@@ -2,7 +2,6 @@ import React from 'react';
 import '../App.css';
 import { Route } from 'react-router-dom'
 import NavbarFeatures from './NavbarFeatures'
-import Orders from './Orders'
 import LogoutLoader from '../containers/LogoutLoader'
 import Home from './Home'
 import {PrivateRoute} from './PrivateRoute'
@@ -16,10 +15,9 @@ const App = () => (
 
       
       <PrivateRoute exact path="/" component={Home}/>
-      <Route exact path="/orders" component={Orders}/>
       <Route exact path="/login" component={LoginLoader}/>
+      <Route path="/profile/:username" component={ProfileLoader} />
       <Route path="/logout" component={LogoutLoader}/>
-      <Route path="/profile" component={ProfileLoader}/>
       <Route path="/create" component={CreationLoader}/>
 
   </div>

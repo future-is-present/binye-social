@@ -5,7 +5,7 @@ import NavbarFeatures from '../components/NavbarFeatures'
 export default connect(
     state => {
         return ({
-            ...state.identity.profile
+            ...state
         })
     }
 )(NavbarFeatures)

@@ -49,8 +49,7 @@ export default class List extends Component {
     return (
       <div >
         {items.map((item)=> {
-          console.log(item.nationality);
-          return renderItem(item._id, item.nationality, item.description)
+          return renderItem(item._id, 'test', item.nationality, item.description)
         })
         }
         {pageCount > 0 && !isLastPage && this.renderLoadMore()}

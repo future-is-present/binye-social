@@ -3,7 +3,7 @@ const config = require("dotenv").config();
 
 const mongoUrl = config.parsed.MONGO_HOST
 const client = mdb.MongoClient
-const dbName = "dewa"
+const dbName = "binye"
 
 export const state = {
     conn: null

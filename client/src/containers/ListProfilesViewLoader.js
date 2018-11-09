@@ -1,14 +1,12 @@
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
-import { showProfile, fetchData } from '../actions/index'
-import ProfileList from '../components/ProfileList';
+import { showProfile, fetchData } from '../actions'
+import ListProfilesView from '../components/ListProfilesView';
 
 const baseUri = 'http://localhost:8080/getProfiles';
 
 
 const mapStateToProps = (state, ownProps) => {
 
-  
     const {
         identity,
         dataArr
@@ -39,4 +37,4 @@ export default connect(
         onFetch: async values => 
             dispatch(await fetchData()),
     })
-)(ProfileList)
+)(ListProfilesView)

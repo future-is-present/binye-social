@@ -37,6 +37,14 @@ export default class NavbarFeatures extends React.Component {
   }
 
   render() {
+    console.log(this.props)
+    let login 
+    if(this.props.identity){
+      login = <NavLink href={"/logout" }> Logout</NavLink>
+      }else{
+      login = <NavLink href={"/login" }>Login</NavLink>
+      }
+
     //  <Media object src={MyPlaceHolderPicture} alt="My PlaceHolder Picture" />
     return (
       <div>
@@ -71,7 +79,7 @@ export default class NavbarFeatures extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink href={"/logout" }>{ localStorage.getItem('user')? 'Logout' : null }</NavLink>
+                {login}
               </NavItem>
             </Nav>
           </Collapse>

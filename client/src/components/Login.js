@@ -10,19 +10,17 @@ export default class Login extends Component {
       email: "",
       password: ""
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handler = this.handler.bind(this);
   }
 
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0;
   }
 
-  handler(e){
+  handler = (e) => {
     this.props.filterUser(e.target.value);
   }
 
-  handleSubmit (event) {
+  handleSubmit = (event) => {
     this.props.onSubmit(event.target.value)
   }
 

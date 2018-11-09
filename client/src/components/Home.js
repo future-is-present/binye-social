@@ -1,41 +1,23 @@
 import React, { Component } from 'react';
 import logo from '../resources/logo.jpg';
-import ProfileListLoader from '../containers/ProfileListLoader';
+import ListProfilesViewLoader from '../containers/ListProfilesViewLoader';
 
 
 class Home extends Component {
 
     constructor(props) {
       super(props);
-
-      this.state ={
-        showProfiles : true,
-        listProfiles : []
-      }
   
-      this.state.listProfiles.push("asdf")
-      this.hideProfiles = this.hideProfiles.bind(this)
-
     }
 
-    // componentDidMount() {
-    //     fetch('/users')
-    //       .then(res => res.json())
-    //       .then(listProfiles => this.setState({ listProfiles }));
-    //   }
-
-    hideProfiles(){
+    hideProfiles = () => {
         this.setState(prevState => ({
           showProfiles: !prevState.showProfiles,
         }))
       }
 
     render() {
-        // for (var i = 0; i < 2; i++) {
-        //     this.state.listProfiles.push(<ProfileList key={i} />);
-        // }
     
-        console.log("List of profiles", this.state.listProfiles)
         return(
         <div>
             <header className="App-header">
@@ -46,10 +28,9 @@ class Home extends Component {
             </header>
 
 
-            <ProfileListLoader />
+            <ListProfilesViewLoader />
         </div>
         );
-        // { this.state.showProfiles ? this.state.listProfiles : null };
     }
 
 }

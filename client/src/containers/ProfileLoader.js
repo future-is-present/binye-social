@@ -3,11 +3,26 @@ import { push } from 'react-router-redux'
 import { mapStateToOrder } from '../actions/index'
 import Profile from '../components/Profile';
 
+
+
+const mapStateToProps = (state) => {
+
+    const {
+        identity,
+        dataArr
+    } = state
+
+    const profileInfo =  dataArr.response[0]
+    console.log('profile loader ', dataArr)
+    return {
+        initialValues: identity.profile,
+        dataArr,
+        profileInfo
+    }
+  }
 export default connect(
 
-    (state) => ({
-        orders: 'orders'
-    }),
+    mapStateToProps,
 
     dispatch => ({
         handleRowClick: profileId => {
