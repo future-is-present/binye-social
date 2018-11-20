@@ -16,8 +16,9 @@ router.get('/getProfiles', async function (req, res) {
     // Query the mongoDB
     const profiles = await mdb.get('profiles')
 
+    
     // Fake response from the mongo database
-    return res.status(200).json(["prifle1","profile2"])
+    return res.status(200).json(profiles)
 })
 
 module.exports = router
