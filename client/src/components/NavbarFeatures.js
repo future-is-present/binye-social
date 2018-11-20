@@ -37,9 +37,8 @@ export default class NavbarFeatures extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let login 
-    if(this.props.identity){
+    if(this.props.identity.name){
       login = <NavLink href={"/logout" }> Logout</NavLink>
       }else{
       login = <NavLink href={"/login" }>Login</NavLink>

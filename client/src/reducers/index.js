@@ -4,7 +4,7 @@ import { routerReducer } from 'react-router-redux'
 
 import identity from './identity'
 const initialState = {
-    no: 'no'
+    initialState: 'intial'
 }
 const dataArr = (state = initialState, action) => {
     switch(action.type){

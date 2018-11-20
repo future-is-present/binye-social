@@ -5,10 +5,12 @@ export default function createSlimAsyncMiddleware({
     return next => action => {
         const {
             types,
+            type,
             callAPI,
             shouldCallAPI = () => true,
         } = action;
-        if (!actionIsValid(action)) next(action);
+        
+        if (typeof types === 'undefined') next(action);
         if (shouldCallAPI(getState())) {
             return Promise.resolve(getState());
         }
@@ -34,6 +36,11 @@ export default function createSlimAsyncMiddleware({
     };
 }
 
-function actionIsValid(action) {
+function actionIsValid(types) {
+    console.log('action', types)
+
+    if(types === 'GENERATE_PROFILE'){
+        return false
+    }
     return true
 }

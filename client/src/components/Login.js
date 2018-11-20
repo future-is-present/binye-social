@@ -20,8 +20,9 @@ export default class Login extends Component {
     this.props.filterUser(e.target.value);
   }
 
-  handleSubmit = (event) => {
-    this.props.onSubmit(event.target.value)
+  handleSubmit = async (event) => {
+    await this.props.onSubmit(this.state.email)
+    this.props.history.push('/profile')
   }
 
   handleChange = event => {

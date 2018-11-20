@@ -8,6 +8,7 @@ import profilePicture from '../resources/cala.png'
 class Profile extends Component {
   constructor(props) {
     super(props);
+    console.log('rednering profile')
   }
 
   

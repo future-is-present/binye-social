@@ -50,6 +50,7 @@ export default class ListProfilesView extends Component {
   }
 
   clickProfile  = (event) => {
+    //this.props.generateProfile()
     this.props.onSubmit(event.target.value)
   }
 
@@ -74,6 +75,10 @@ export default class ListProfilesView extends Component {
         description={description}
          />
     )
+  }
+
+  clock = () =>{
+    this.props.clock()
   }
   
   render() {

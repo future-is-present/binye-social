@@ -11,9 +11,7 @@ const mapStateToProps = (state) => {
         identity,
         dataArr
     } = state
-
     const profileInfo =  dataArr.response[0]
-    console.log('profile loader ', dataArr)
     return {
         initialValues: identity.profile,
         dataArr,

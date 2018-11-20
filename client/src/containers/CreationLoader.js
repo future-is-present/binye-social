@@ -22,7 +22,6 @@ export default connect(
 
     dispatch => ({
         onSubmit: values => {
-            console.log('submiting form')
             dispatch(submitProfile(values))
             dispatch(push('/'))
         }

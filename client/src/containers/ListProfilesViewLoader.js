@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { showProfile, fetchData } from '../actions'
+import { showProfile, fetchData, generateProfile} from '../actions'
 import ListProfilesView from '../components/ListProfilesView';
 
 const baseUri = 'http://localhost:8080/getProfiles';
@@ -26,12 +26,10 @@ export default connect(
 
     dispatch => ({
         onSubmit: values => {
-            console.log('ee')
             dispatch(showProfile())
             //dispatch(push('/login')) // TODO: Not working 
         },
         getUser: async id => {
-            console.log('get user')
             const result = await dispatch(fetch(`${baseUri}`, { method: 'GET' }));
         },
         onFetch: async values => 

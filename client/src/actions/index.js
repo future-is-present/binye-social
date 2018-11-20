@@ -4,9 +4,9 @@ const
     FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 
 export function generateProfile(user) {
-
     return {
         type: 'GENERATE_PROFILE',
+        message: 'success',
         name: user,
         password: 'osuiado5g'
     }
